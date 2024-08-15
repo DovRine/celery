@@ -642,9 +642,15 @@ class Consumer:
                     logger.info(payload)
                     logger.info('-------------------------------------')
                     type_, payload = payload['task'], payload  # protocol v1
-                except (TypeError, KeyError):
-                    logger.info('4'*30)
+                except TypeError:
+                    logger.info('3.1'*30)
                     return on_unknown_message(payload, message)
+                except KeyError:
+                    logger.info('3.2'*30)
+                    return on_unknown_message(payload, message)
+                # except (TypeError, KeyError):
+                #     logger.info('4'*30)
+                #     return on_unknown_message(payload, message)
             try:
                 strategy = strategies[type_]
             except KeyError as exc:
