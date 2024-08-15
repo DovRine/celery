@@ -644,6 +644,7 @@ class Consumer:
                     type_, payload = payload['task'], payload  # protocol v1
                 except TypeError:
                     logger.info('3.1'*30)
+                    logger.info(type(payload))
                     return on_unknown_message(payload, message)
                 except KeyError:
                     logger.info('3.2'*30)
