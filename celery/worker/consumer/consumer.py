@@ -632,6 +632,10 @@ class Consumer:
                 logger.info('2'*30)
                 return on_unknown_message(None, message)
             except KeyError:
+                logger.info('2.1'*30)
+                logger.info(type(message))
+                logger.info(message)
+                logger.info(message.decode)
                 try:
                     payload = message.decode()
                 except Exception as exc:  # pylint: disable=broad-except
