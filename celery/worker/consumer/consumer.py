@@ -638,6 +638,9 @@ class Consumer:
                     logger.info('3'*30)
                     return self.on_decode_error(message, exc)
                 try:
+                    logger.info('------------- payload --------------')
+                    logger.info(payload)
+                    logger.info('-------------------------------------')
                     type_, payload = payload['task'], payload  # protocol v1
                 except (TypeError, KeyError):
                     logger.info('4'*30)
